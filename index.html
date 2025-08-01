@@ -21,7 +21,7 @@
       cursor: pointer; background: white; color: #3f51b5; transition: 0.3s ease;
     }
     a:hover, button:hover { transform: scale(1.1); background: #e3f2fd; }
-    #muteBtn {
+    #musicBtn {
       position: fixed; top: 15px; right: 15px; padding: 8px 12px;
       background: rgba(255,255,255,0.7); border: none; border-radius: 20px; cursor: pointer;
     }
@@ -37,8 +37,8 @@
   <a href="gallery.html">Gallery</a>
   <a href="message.html">Message</a>
 
-  <button id="muteBtn">Mute</button>
-  <audio id="bgMusic" loop autoplay>
+  <button id="musicBtn">Play Music</button>
+  <audio id="bgMusic" loop>
     <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_4a64c8b13b.mp3?filename=soft-ambient-11062.mp3" type="audio/mp3">
   </audio>
 
@@ -59,11 +59,19 @@
     window.onload=circles;
 
     const audio = document.getElementById('bgMusic');
-    const muteBtn = document.getElementById('muteBtn');
-    muteBtn.onclick = function(){
-      if(audio.muted){ audio.muted = false; muteBtn.textContent = "Mute"; }
-      else { audio.muted = true; muteBtn.textContent = "Unmute"; }
-    }
+    const btn = document.getElementById('musicBtn');
+    btn.onclick = function() {
+      if(audio.paused) {
+        audio.play();
+        btn.textContent = 'Mute';
+      } else if(!audio.muted) {
+        audio.muted = true;
+        btn.textContent = 'Unmute';
+      } else {
+        audio.muted = false;
+        btn.textContent = 'Mute';
+      }
+    };
   </script>
 </body>
 </html>
