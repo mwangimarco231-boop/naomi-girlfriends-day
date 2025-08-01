@@ -1,4 +1,9 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Home</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Girlfriend's Day</title>
   <style>
     body {
       margin: 0; height: 100vh;
@@ -6,29 +11,37 @@
       justify-content: center; align-items: center;
       background: linear-gradient(135deg, #7F7FD5, #86A8E7, #91EAE4);
       font-family: 'Segoe UI', sans-serif;
-      overflow: hidden;
-      text-align: center;
-      color: white;
+      overflow: hidden; text-align: center; color: white;
     }
     h1 { font-size: 2em; animation: fadeIn 2s ease-in-out; }
     p { font-size: 1.2em; margin-bottom: 30px; }
     a, button {
-      text-decoration: none;
-      padding: 12px 20px; margin: 10px;
-      font-size: 1em; border: none;
-      border-radius: 25px; cursor: pointer;
-      background: white; color: #3f51b5;
-      transition: 0.3s ease;
+      text-decoration: none; padding: 12px 20px; margin: 10px;
+      font-size: 1em; border: none; border-radius: 25px;
+      cursor: pointer; background: white; color: #3f51b5; transition: 0.3s ease;
     }
     a:hover, button:hover { transform: scale(1.1); background: #e3f2fd; }
+    #muteBtn {
+      position: fixed; top: 15px; right: 15px; padding: 8px 12px;
+      background: rgba(255,255,255,0.7); border: none; border-radius: 20px; cursor: pointer;
+    }
     .circle { position: absolute; border-radius: 50%; background: rgba(255,255,255,0.3);
       animation: float 8s ease-in-out infinite; }
-    @keyframes float { 
-      0%{transform:translateY(0); opacity:1;} 
-      100%{transform:translateY(-200px); opacity:0;} 
-    }
+    @keyframes float { 0%{transform:translateY(0); opacity:1;} 100%{transform:translateY(-200px); opacity:0;} }
     @keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
   </style>
+</head>
+<body>
+  <h1>Happy Girlfriend's Day, Naomi!</h1>
+  <p>Celebrating friendship and appreciation.</p>
+  <a href="gallery.html">Gallery</a>
+  <a href="message.html">Message</a>
+
+  <button id="muteBtn">Mute</button>
+  <audio id="bgMusic" loop autoplay>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_4a64c8b13b.mp3?filename=soft-ambient-11062.mp3" type="audio/mp3">
+  </audio>
+
   <script>
     function circles(){
       for(let i=0;i<10;i++){
@@ -44,11 +57,13 @@
       }
     }
     window.onload=circles;
+
+    const audio = document.getElementById('bgMusic');
+    const muteBtn = document.getElementById('muteBtn');
+    muteBtn.onclick = function(){
+      if(audio.muted){ audio.muted = false; muteBtn.textContent = "Mute"; }
+      else { audio.muted = true; muteBtn.textContent = "Unmute"; }
+    }
   </script>
-</head>
-<body>
-  <h1>Happy Girlfriend's Day, Naomi!</h1>
-  <p>Celebrating friendship and appreciation.</p>
-  <a href="gallery.html">Gallery</a>
-  <a href="message.html">Message</a>
-</body></html>
+</body>
+</html>
