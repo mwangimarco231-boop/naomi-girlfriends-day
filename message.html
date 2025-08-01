@@ -1,0 +1,55 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Message</title>
+  <style>
+    body {
+      margin: 0; height: 100vh;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      background: linear-gradient(135deg, #7F7FD5, #86A8E7, #91EAE4);
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+      text-align: center;
+      color: white;
+    }
+    h1 { font-size: 2em; animation: fadeIn 2s ease-in-out; }
+    p { font-size: 1.2em; margin-bottom: 30px; }
+    a, button {
+      text-decoration: none;
+      padding: 12px 20px; margin: 10px;
+      font-size: 1em; border: none;
+      border-radius: 25px; cursor: pointer;
+      background: white; color: #3f51b5;
+      transition: 0.3s ease;
+    }
+    a:hover, button:hover { transform: scale(1.1); background: #e3f2fd; }
+    .circle { position: absolute; border-radius: 50%; background: rgba(255,255,255,0.3);
+      animation: float 8s ease-in-out infinite; }
+    @keyframes float { 
+      0%{transform:translateY(0); opacity:1;} 
+      100%{transform:translateY(-200px); opacity:0;} 
+    }
+    @keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
+  </style>
+  <script>
+    function circles(){
+      for(let i=0;i<10;i++){
+        let circle=document.createElement('div');
+        let size=Math.random()*30+20;
+        circle.classList.add('circle');
+        circle.style.width=size+'px';
+        circle.style.height=size+'px';
+        circle.style.left=Math.random()*window.innerWidth+'px';
+        circle.style.top=window.innerHeight+'px';
+        document.body.appendChild(circle);
+        setTimeout(()=>circle.remove(),8000);
+      }
+    }
+    window.onload=circles;
+  </script>
+</head>
+<body>
+  <h1>Special Note</h1>
+  <p>Naomi, thank you for your friendship, support, and all the great moments.
+  Wishing you a joyful Girlfriend’s Day!</p>
+  <a href="thanks.html">Thank You Page</a>
+  <a href="index.html">Back to Home</a>
+</body></html>
